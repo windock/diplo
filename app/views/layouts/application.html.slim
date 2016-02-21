@@ -12,5 +12,11 @@ html
     header
       == render 'layouts/navigation'
     main[role="main"]
-      == render 'layouts/messages'
-      == yield
+      .container-fluid
+        .row
+          .col-md-2
+            == render 'layouts/sidebar'
+          .col-md-10
+            == render 'layouts/messages'
+            .content
+              == yield
