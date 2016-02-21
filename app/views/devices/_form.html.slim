@@ -1,0 +1,33 @@
+= form_for @device, html: { class: "form form-horizontal device" } do |f|
+  .form-group
+    = f.label :username, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :username, :class => 'form-control'
+    = f.error_span(:username)
+  .form-group
+    = f.label :device_type, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :device_type, Device.device_types.keys.to_a, {}, { class: 'form-control col-lg-2' }
+    = f.error_span(:device_type)
+  .form-group
+    = f.label :lifecycle, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :lifecycle, Device.lifecycles.keys.to_a, {}, { class: 'form-control col-lg-2' }
+    = f.error_span(:lifecycle)
+  .form-group
+    = f.label :email_enabled, :class => 'control-label col-lg-2'
+    .col-lg-10
+      .checkbox
+        label = f.check_box :email_enabled
+    = f.error_span(:email_enabled)
+  .form-group
+    = f.label :printer_enabled, :class => 'control-label col-lg-2'
+    .col-lg-10
+      .checkbox
+        label = f.check_box :printer_enabled
+    = f.error_span(:printer_enabled)
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil, :class => 'btn btn-primary'
+      '
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), devices_path, :class => 'btn'
