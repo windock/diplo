@@ -1,0 +1,18 @@
+h2 = @product.name
+dl
+  td Name
+  dd = @product.name
+  td Title
+  dd = @product.title
+  td Description
+  dd = @product.description
+  td Concern:
+  dd = @product.concern_id
+  td Skin type:
+  dd = @product.skin_type
+  td SKU
+  dd = @product.sku
+
+= link_to 'Edit', edit_product_path(@product)
+'|
+= link_to 'Back', products_path
