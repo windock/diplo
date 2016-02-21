@@ -1,27 +1,41 @@
-= form_for @product do |f|
-  - if @product.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
-      ul
-        - @product.errors.full_messages.each do |message|
-          li = message
-
+= form_for @product, html: { class: "form form-horizontal product" } do |f|
   .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+    = f.label :name, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :name, :class => 'form-control'
+    = f.error_span(:name)
   .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
+    = f.label :title, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :title, :class => 'form-control'
+    = f.error_span(:title)
   .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control'
+    = f.label :description, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :description, :class => 'form-control'
+    = f.error_span(:description)
   .form-group
-    = f.label :concern_id
-    = f.number_field :concern_id, class: 'form-control'
+    = f.label :concern_id, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :concern_id, Product.concerns.keys.to_a, {}, { class: 'form-control col-lg-2' }
+    = f.error_span(:concern_id)
   .form-group
-    = f.label :skin_type
-    = f.number_field :skin_type, class: 'form-control'
+    = f.label :skin_type, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :skin_type, Product.skin_types.keys.to_a, {}, { class: 'form-control col-lg-2' }
+    = f.error_span(:skin_type)
   .form-group
-    = f.label :sku
-    = f.text_field :sku, class: 'form-control'
-  = f.submit 'Submit', class: 'btn btn-default'
+    = f.label :sku, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :sku, :class => 'form-control'
+    = f.error_span(:sku)
+  .form-group
+    = f.label :price, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :price, :class => 'form-control'
+    = f.error_span(:price)
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil, :class => 'btn btn-primary'
+      '
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn'
