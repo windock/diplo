@@ -8,7 +8,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:name)
       th= model_class.human_attribute_name(:title)
       th= model_class.human_attribute_name(:description)
-      th= model_class.human_attribute_name(:concern_id)
+      th= model_class.human_attribute_name(:concern)
       th= model_class.human_attribute_name(:skin_type)
       th= model_class.human_attribute_name(:sku)
       th= model_class.human_attribute_name(:price)
@@ -17,11 +17,11 @@ table.table.table-striped
   tbody
     - @products.each do |product|
       tr
-        td= link_to product.id, product_path(product)
+        td= product.id
         td= product.name
         td= product.title
         td= product.description
-        td= product.concern_id
+        td= product.primary_concern
         td= product.skin_type
         td= product.sku
         td= product.price

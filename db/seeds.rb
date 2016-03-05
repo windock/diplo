@@ -7,3 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+[
+  ['US', 'United States'],
+  ['CA', 'Canada'],
+  ['DE', 'Germany'],
+  ['UA', 'Ukraine'],
+  ['RU', 'Russia'],
+  ['BG', 'Belgium']
+].each do |row|
+  Market.create(code: row.first, name: row.last)
+end

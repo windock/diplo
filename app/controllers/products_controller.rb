@@ -1,11 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.all
-  end
-
-  def show
   end
 
   def new
@@ -19,7 +16,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+      redirect_to edit_product_path(@product), notice: 'Product was successfully created.'
     else
       render :new
     end
@@ -27,7 +24,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to edit_product_path(@product), notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -44,6 +41,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:title, :name, :description, :concern_id, :skin_type, :sku, :price)
+      params.require(:product).permit(:title, :name, :description, :primary_concern, :skin_type, :sku, :price, market_ids: [])
     end
 end

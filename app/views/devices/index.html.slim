@@ -15,7 +15,7 @@ table.table.table-striped
   tbody
     - @devices.each do |device|
       tr
-        td= link_to device.id, device_path(device)
+        td= device.id
         td= device.username
         td= device.device_type
         td= device.lifecycle
