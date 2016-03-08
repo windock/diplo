@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profiles, except: [:show]
   resources :devices, except: [:show]
   resources :products, except: [:show]
   resources :users

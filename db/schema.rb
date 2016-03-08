@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305144730) do
+ActiveRecord::Schema.define(version: 20160305152731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20160305144730) do
     t.integer  "skin_type"
     t.string   "sku"
     t.decimal  "price"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "language_id"
+    t.integer  "welcome_button1"
+    t.integer  "welcome_button2"
+    t.integer  "welcome_button3"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

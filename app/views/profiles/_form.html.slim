@@ -1,0 +1,36 @@
+= form_for @profile, html: { class: "form form-horizontal profile" } do |f|
+  .form-group
+    = f.label :name, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :name, class: 'form-control'
+    = f.error_span(:name)
+  .form-group
+    = f.label :description, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_area :description, class: 'form-control'
+    = f.error_span(:device_type)
+  .form-group
+    = f.label :language_id, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.number_field :language_id, class: 'form-control'
+    = f.error_span(:language_id)
+  .form-group
+    = f.label :welcome_button1, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :welcome_button1, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.ord] }, { selected: f.object.welcome_button1.ord }, class: 'form-control'
+    = f.error_span(:welcome_button1)
+  .form-group
+    = f.label :welcome_button2, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :welcome_button2, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.ord] }, { selected: f.object.welcome_button2.ord }, class: 'form-control'
+    = f.error_span(:welcome_button2)
+  .form-group
+    = f.label :welcome_button3, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :welcome_button3, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.ord] }, { selected: f.object.welcome_button3.ord }, class: 'form-control'
+    = f.error_span(:welcome_button3)
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil, class: 'btn btn-primary'
+      '
+      = link_to 'Cancel', profiles_path, class: 'btn'
