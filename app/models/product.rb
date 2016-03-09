@@ -1,4 +1,4 @@
-class Product < ActiveRecord::Base
+class Product < ApplicationRecord
   enum skin_type: [ :dry, :normal, :oily, :combination, :sensitive ]
   enum primary_concern: [ :daily_care, :blemish, :cleanse, :daily_sun_care, :de_aging,
                           :deodorant, :dullness, :eye_area, :foundation, :hydration,

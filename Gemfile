@@ -28,17 +28,8 @@ group :development do
   gem 'twitter-bootstrap-rails'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'rspec-rails'
   gem 'rubocop'
 end
 group :production do
   gem 'rails_12factor'
-end
-group :test do
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'launchy'
-  gem 'selenium-webdriver'
 end

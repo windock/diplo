@@ -1,4 +1,4 @@
-class Device < ActiveRecord::Base
+class Device < ApplicationRecord
   enum device_type: [ :kiosk, :consultant ]
   enum lifecycle: [ :inventory, :in_service, :decomissioned ]
 

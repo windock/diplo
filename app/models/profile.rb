@@ -1,4 +1,4 @@
-class Profile < ActiveRecord::Base
+class Profile < ApplicationRecord
   class WelcomeButton < TypesafeEnum::Base
     new :NONE, 'None'
     new :CAMPAIGN, 'Campaign'
@@ -10,35 +10,11 @@ class Profile < ActiveRecord::Base
     def to_s
       value
     end
-
-    def self.load(button_ord)
-      return NONE if button_ord.nil?
-      self.find_by_ord(button_ord)
-    end
-
-    def self.dump(button)
-      button.ord
-    end
   end
 
   validates :name, :language_id, presence: true
 
-  serialize :welcome_button1, WelcomeButton
-  serialize :welcome_button2, WelcomeButton
-  serialize :welcome_button3, WelcomeButton
-
-  def welcome_button1=(value)
-    value = value.to_i if value.is_a?(String)
-    super(value)
-  end
-
-  def welcome_button2=(value)
-    value = value.to_i if value.is_a?(String)
-    super(value)
-  end
-
-  def welcome_button3=(value)
-    value = value.to_i if value.is_a?(String)
-    super(value)
-  end
+  has_enum :welcome_button1, WelcomeButton
+  has_enum :welcome_button2, WelcomeButton
+  has_enum :welcome_button3, WelcomeButton
 end

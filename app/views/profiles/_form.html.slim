@@ -17,17 +17,17 @@
   .form-group
     = f.label :welcome_button1, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.select :welcome_button1, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.ord] }, { selected: f.object.welcome_button1.ord }, class: 'form-control'
+      = f.select :welcome_button1, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.key] }, { selected: f.object.welcome_button1&.key }, class: 'form-control'
     = f.error_span(:welcome_button1)
   .form-group
     = f.label :welcome_button2, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.select :welcome_button2, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.ord] }, { selected: f.object.welcome_button2.ord }, class: 'form-control'
+      = f.select :welcome_button2, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.key] }, { selected: f.object.welcome_button2&.key }, class: 'form-control'
     = f.error_span(:welcome_button2)
   .form-group
     = f.label :welcome_button3, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.select :welcome_button3, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.ord] }, { selected: f.object.welcome_button3.ord }, class: 'form-control'
+      = f.select :welcome_button3, Profile::WelcomeButton.to_a.map { |wb| [wb.value, wb.key] }, { selected: f.object.welcome_button3&.key }, class: 'form-control'
     = f.error_span(:welcome_button3)
   .form-group
     .col-lg-offset-2.col-lg-10
