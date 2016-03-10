@@ -14,7 +14,7 @@ class Profile < ApplicationRecord
 
   validates :name, :language_id, presence: true
 
-  has_enum :welcome_button1, WelcomeButton
-  has_enum :welcome_button2, WelcomeButton
-  has_enum :welcome_button3, WelcomeButton
+  attribute :welcome_button1, StrictEnum::IndexEnum.new(WelcomeButton)
+  attribute :welcome_button2, StrictEnum::IndexEnum.new(WelcomeButton)
+  attribute :welcome_button3, StrictEnum::IndexEnum.new(WelcomeButton)
 end
