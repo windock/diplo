@@ -4,21 +4,21 @@
 table.table.table-striped
   thead
     tr
-      th= model_class.human_attribute_name(:id)
-      th= model_class.human_attribute_name(:username)
-      th= model_class.human_attribute_name(:device_type)
-      th= model_class.human_attribute_name(:lifecycle)
-      th= model_class.human_attribute_name(:email_enabled)
-      th= model_class.human_attribute_name(:printer_enabled)
-      th= model_class.human_attribute_name(:created_at)
-      th=t '.actions', :default => t("helpers.actions")
+      th Id
+      th Username
+      th Device Type
+      th Lifecycle
+      th Email Enabled
+      th Printer Enabled
+      th.actions
+
   tbody
     - @devices.each do |device|
       tr
         td= device.id
         td= device.username
-        td= device.device_type
-        td= device.lifecycle
+        td= device.device_type.value
+        td= device.lifecycle.value
         td= device.email_enabled
         td= device.printer_enabled
         td=l device.created_at

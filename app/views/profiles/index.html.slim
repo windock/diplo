@@ -20,9 +20,9 @@ table.table.table-striped
         td = profile.name
         td = profile.description
         td = profile.language_id
-        td = profile.welcome_button1
-        td = profile.welcome_button2
-        td = profile.welcome_button3
+        td = profile.welcome_button1.value
+        td = profile.welcome_button2.value
+        td = profile.welcome_button3.value
         td
           = link_to 'Edit', edit_profile_path(profile), class: 'btn btn-default btn-xs'
           '
