@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :users
 
   root to: 'visitors#index'
-  devise_for :users
+  #devise_for :users
 end

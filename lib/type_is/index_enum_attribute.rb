@@ -21,11 +21,13 @@ module TypeIs
         raise TypeError
       end
     end
+    alias :deserialize :type_cast_from_database
 
     def type_cast_for_database(enum_value)
       return nil if enum_value.nil?
       enum_value.ord
     end
+    alias :serialize :type_cast_for_database
 
     def type_cast_from_user(value)
       if value.is_a?(@enum_type)
@@ -38,5 +40,6 @@ module TypeIs
         raise TypeError
       end
     end
+    alias :cast :type_cast_from_user
   end
 end
