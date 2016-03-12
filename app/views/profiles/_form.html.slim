@@ -10,11 +10,6 @@
       = f.text_area :description, class: 'form-control'
     = f.error_span(:device_type)
   .form-group
-    = f.label :language_id, class: 'control-label col-lg-2'
-    .col-lg-10
-      = f.number_field :language_id, class: 'form-control'
-    = f.error_span(:language_id)
-  .form-group
     = f.label :welcome_button1, class: 'control-label col-lg-2'
     .col-lg-10
       = f.collection_select :welcome_button1, Profile::WelcomeButton, :itself, :value, {}, class: 'form-control'

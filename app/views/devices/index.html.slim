@@ -27,4 +27,4 @@ table.table.table-striped
           '
           = link_to t('.destroy', :default => t("helpers.links.destroy")), device_path(device), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_device_path, :class => 'btn btn-primary'
+= link_to 'New', new_device_path, class: 'btn btn-primary'
