@@ -15,4 +15,6 @@ class Device < ApplicationRecord
   attribute :lifecycle, TypeIs::IndexEnumAttribute.new(Lifecycle), default: Lifecycle::Inventory
 
   validates :username, :device_type, :lifecycle, presence: true
+
+  belongs_to :profile
 end

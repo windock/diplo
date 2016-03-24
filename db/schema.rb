@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312175535) do
+ActiveRecord::Schema.define(version: 20160324214424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 20160312175535) do
     t.boolean  "printer_enabled"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "profile_id"
   end
+
+  add_index "devices", ["profile_id"], name: "index_devices_on_profile_id", using: :btree
 
   create_table "markets", force: :cascade do |t|
     t.string   "code"
@@ -51,6 +54,14 @@ ActiveRecord::Schema.define(version: 20160312175535) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "profile_markets", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "market_id"
+  end
+
+  add_index "profile_markets", ["market_id"], name: "index_profile_markets_on_market_id", using: :btree
+  add_index "profile_markets", ["profile_id"], name: "index_profile_markets_on_profile_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "name"
@@ -81,4 +92,7 @@ ActiveRecord::Schema.define(version: 20160312175535) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "devices", "profiles"
+  add_foreign_key "profile_markets", "markets"
+  add_foreign_key "profile_markets", "profiles"
 end

@@ -41,6 +41,6 @@ class DevicesController < ApplicationController
     end
 
     def device_params
-      params.require(:device).permit(:username, :device_type, :lifecycle, :email_enabled, :printer_enabled)
+      params.require(:device).permit(:username, :device_type, :lifecycle, :email_enabled, :printer_enabled, :profile_id)
     end
 end

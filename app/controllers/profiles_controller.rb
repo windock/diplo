@@ -42,6 +42,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:name, :description, :language_id, :welcome_button1, :welcome_button2, :welcome_button3)
+      params.require(:profile).permit(:name, :description, :language_id, :welcome_button1, :welcome_button2, :welcome_button3, market_ids: [])
     end
 end

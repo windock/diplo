@@ -13,4 +13,7 @@ class Profile < ApplicationRecord
   attribute :welcome_button1, TypeIs::IndexEnumAttribute.new(WelcomeButton), default: WelcomeButton::None
   attribute :welcome_button2, TypeIs::IndexEnumAttribute.new(WelcomeButton), default: WelcomeButton::None
   attribute :welcome_button3, TypeIs::IndexEnumAttribute.new(WelcomeButton), default: WelcomeButton::None
+
+  has_many :profile_markets
+  has_many :markets, through: :profile_markets
 end

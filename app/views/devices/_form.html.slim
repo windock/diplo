@@ -26,8 +26,13 @@
       .checkbox
         label = f.check_box :printer_enabled
     = f.error_span(:printer_enabled)
+
+  .form-group
+    = f.label :profile, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.collection_select :profile_id, Profile.all, :id, :name, {}, { class: 'form-control' }
   .form-group
     .col-lg-offset-2.col-lg-10
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit nil, class: 'btn btn-primary'
       '
       = link_to 'Cancel', devices_path, class: 'btn'

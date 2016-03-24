@@ -25,6 +25,14 @@
       = f.collection_select :welcome_button3, Profile::WelcomeButton, :itself, :value, {}, class: 'form-control'
     = f.error_span(:welcome_button3)
   .form-group
+    = f.label :markets, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.collection_check_boxes :market_ids, Market.all, :id, :name, {} do |b|
+        .checkbox
+          = b.label do
+            = b.check_box
+            = b.text
+  .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil, class: 'btn btn-primary'
       '
