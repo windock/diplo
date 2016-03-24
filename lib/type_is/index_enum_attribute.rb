@@ -29,6 +29,10 @@ module TypeIs
     end
     alias :serialize :type_cast_for_database
 
+    def changed?(*args)
+      true
+    end
+
     def type_cast_from_user(value)
       if value.is_a?(@enum_type)
         value
