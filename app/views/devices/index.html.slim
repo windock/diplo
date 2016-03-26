@@ -1,10 +1,8 @@
-- model_class = Device
 .page-header
-  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  h1 Devices
 table.table.table-striped
   thead
     tr
-      th Id
       th Username
       th Device Type
       th Lifecycle
@@ -15,7 +13,6 @@ table.table.table-striped
   tbody
     - @devices.each do |device|
       tr
-        td= device.id
         td= device.username
         td= device.device_type.value
         td= device.lifecycle.value

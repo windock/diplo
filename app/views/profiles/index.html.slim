@@ -4,7 +4,6 @@
 table.table.table-striped
   thead
     tr
-      th Id
       th Name
       th Description
       th Welcome button1
@@ -15,7 +14,6 @@ table.table.table-striped
   tbody
     - @profiles.each do |profile|
       tr
-        td = profile.id
         td = profile.name
         td = profile.description
         td = profile.welcome_button1.value

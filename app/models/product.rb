@@ -30,8 +30,9 @@ class Product < ApplicationRecord
   attribute :skin_type, TypeIs::IndexEnumAttribute.new(SkinType), default: SkinType::Normal
   attribute :primary_concern, TypeIs::IndexEnumAttribute.new(PrimaryConcern), default: PrimaryConcern::Unknown
 
-  validates :name, :title, :primary_concern, :skin_type, :sku, presence: true
+  validates :name, :title, :primary_concern, :skin_type, :sku, :category, presence: true
 
+  belongs_to :category
   has_many :product_markets
   has_many :markets, through: :product_markets
   has_many :translations, class_name: 'ProductTranslation'

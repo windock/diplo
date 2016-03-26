@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(
         :title, :name, :description, :primary_concern, :skin_type, :sku, :price,
+        :category_id,
         market_ids: [],
         translations_attributes: [:id, :title, :description, :language]
       )
