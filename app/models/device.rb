@@ -10,9 +10,8 @@ class Device < ApplicationRecord
     new :Decomissioned, 'Decomissioned'
   end
 
-  attribute :username, ActiveModel::Type::String.new
   attribute :device_type, TypeIs::IndexEnumAttribute.new(DeviceType), default: DeviceType::Consultant
-  attribute :lifecycle, TypeIs::IndexEnumAttribute.new(Lifecycle), default: Lifecycle::Inventory
+  attribute :lifecycle,   TypeIs::IndexEnumAttribute.new(Lifecycle),  default: Lifecycle::Inventory
 
   validates :username, :device_type, :lifecycle, presence: true
 

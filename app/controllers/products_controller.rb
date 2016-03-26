@@ -7,13 +7,16 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    build_translations(@product)
   end
 
   def edit
+    build_translations(@product)
   end
 
   def create
     @product = Product.new(product_params)
+    build_translations(@product)
 
     if @product.save
       redirect_to edit_product_path(@product), notice: 'Product was successfully created.'
@@ -41,6 +44,18 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:title, :name, :description, :primary_concern, :skin_type, :sku, :price, market_ids: [])
+      params.require(:product).permit(
+        :title, :name, :description, :primary_concern, :skin_type, :sku, :price,
+        market_ids: [],
+        translations_attributes: [:id, :title, :description, :language]
+      )
+    end
+
+    def build_translations(product)
+      Language.to_a.each do |language|
+        if product.translations.none? { |t| t.language == language }
+          product.translations.build(language: language)
+        end
+      end
     end
 end
