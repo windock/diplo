@@ -43,20 +43,25 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    def product_params
-      params.require(:product).permit(
-        :title, :name, :description, :primary_concern, :skin_type, :sku, :price,
-        :category_id,
-        market_ids: [],
-        translations_attributes: [:id, :title, :description, :language]
-      )
-    end
-
     def build_translations(product)
       Language.to_a.each do |language|
         if product.translations.none? { |t| t.language == language }
           product.translations.build(language: language)
         end
       end
+    end
+
+    helper_method def available_related_products
+      Product.order(:name).reject { |p| p.id == @product.id }
+    end
+
+    def product_params
+      params.require(:product).permit(
+        :title, :name, :description, :primary_concern, :skin_type, :sku, :price,
+        :category_id,
+        market_ids: [],
+        translations_attributes: [:id, :title, :description, :language],
+        related_product_ids: [],
+      )
     end
 end

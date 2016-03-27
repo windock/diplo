@@ -63,6 +63,27 @@
           = b.label do
             = b.check_box
             = b.text
+  .form-group#related-products
+    = f.label :related_products, class: 'control-label col-lg-2'
+    .col-lg-10
+      - @product.related_products.each do |related_product|
+        .row.form-group.js-item
+          .col-lg-10
+            = select_tag "product[related_product_ids][]",
+              options_from_collection_for_select(available_related_products, :id, :name, { selected: related_product.id }),
+              class: 'form-control'
+          .col-lg-2
+            a.js-remove href="#" Remove
+      a.js-add href="#" Add
+      .row.form-group.js-item.js-template
+        .col-lg-10
+          = select_tag "product[related_product_ids][]",
+            options_from_collection_for_select(available_related_products, :id, :name),
+            class: 'form-control'
+        .col-lg-2
+          a.js-remove href="#" Remove
+
+
   .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil, class: 'btn btn-primary'

@@ -36,6 +36,8 @@ class Product < ApplicationRecord
   has_many :product_markets
   has_many :markets, through: :product_markets
   has_many :translations, class_name: 'ProductTranslation'
+  has_many :related_product_relations
+  has_many :related_products, through: :related_product_relations
 
   accepts_nested_attributes_for :translations
 end
