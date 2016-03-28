@@ -1,0 +1,21 @@
+.page-header
+  h1 Primary Concerns
+
+table.table.table-stripped
+  thead
+    tr
+      th Name
+      th Description
+      th
+
+  tbody
+    - @primary_concerns.each do |primary_concern|
+      tr
+        td = primary_concern.name
+        td = primary_concern.description
+        td
+          = link_to 'Edit', edit_primary_concern_path(primary_concern), class: 'btn btn-default btn-xs'
+          '
+          = link_to 'Destroy', primary_concern, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-xs btn-danger'
+
+= link_to 'New', new_primary_concern_path, class: 'btn btn-primary'

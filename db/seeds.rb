@@ -18,3 +18,24 @@
 ].each do |row|
   Market.create(code: row.first, name: row.last)
 end
+
+[
+  'Daily Care',
+  'Blemish',
+  'Cleanse',
+  'Daily Sun Care',
+  'De-aging',
+  'Deodorant',
+  'Dullness',
+  'Eye Area',
+  'Foundation',
+  'Hydration',
+  'Moisturize',
+  'Pores',
+  'Redness',
+  'Shave',
+  'Sun Protection',
+  'Tone'
+].each do |name|
+  PrimaryConcern.create(name: name)
+end

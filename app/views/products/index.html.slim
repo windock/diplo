@@ -6,9 +6,9 @@ table.table.table-striped
     tr
       th Name
       th Title
-      th Description
       th Concern
       th Skin Type
+      th Category
       th SKU
       th Price
       th Created At
@@ -16,14 +16,13 @@ table.table.table-striped
   tbody
     - @products.each do |product|
       tr
-        td= product.name
-        td= product.title
-        td= product.description
-        td= product.primary_concern.value
-        td= product.skin_type.value
-        td= product.sku
-        td= product.price
-        td=l product.created_at
+        td = product.name
+        td = product.title
+        td = product.primary_concern&.name
+        td = product.skin_type.value
+        td = product.category&.name
+        td = product.sku
+        td = product.price
         td
           = link_to 'Edit', edit_product_path(product), class: 'btn btn-default btn-xs'
           '

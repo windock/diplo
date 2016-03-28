@@ -43,7 +43,7 @@
   .form-group
     = f.label :primary_concern, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.collection_select :primary_concern, Product::PrimaryConcern, :itself, :value, {}, { class: 'form-control' }
+      = f.collection_select :primary_concern, PrimaryConcern.all, :id, :name, {include_blank: true}, { class: 'form-control' }
     = f.error_span(:primary_concern)
   .form-group
     = f.label :skin_type, class: 'control-label col-lg-2'
