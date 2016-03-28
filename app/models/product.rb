@@ -39,5 +39,17 @@ class Product < ApplicationRecord
   has_many :related_product_relations
   has_many :related_products, through: :related_product_relations
 
+  validate :related_products_uniqueness
+
   accepts_nested_attributes_for :translations
+
+  def related_products_uniqueness
+    if related_product_ids.uniq != related_product_ids
+      errors.add(:related_products, "should be unique")
+    end
+  end
+
+  def related_product_ids=(ids)
+    super(ids.uniq)
+  end
 end
