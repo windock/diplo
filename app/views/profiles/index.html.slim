@@ -5,20 +5,12 @@ table.table.table-striped
   thead
     tr
       th Name
-      th Description
-      th Welcome button1
-      th Welcome button2
-      th Welcome button3
       th.actions
 
   tbody
     - @profiles.each do |profile|
       tr
         td = profile.name
-        td = profile.description
-        td = profile.welcome_button1.value
-        td = profile.welcome_button2.value
-        td = profile.welcome_button3.value
         td
           = link_to 'Edit', edit_profile_path(profile), class: 'btn btn-default btn-xs'
           '
