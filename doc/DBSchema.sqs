@@ -54,7 +54,7 @@
             <foreignKeyName><![CDATA[fk_rails_620ded3d2b]]></foreignKeyName>
             <uid><![CDATA[E8896526-F8FA-4F27-8AA3-A1529CD9EBEF]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[6]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[5]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[product_markets_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[286EF7DA-8683-4F37-966F-F96FBECAD91B]]></uid>
@@ -146,7 +146,7 @@
             <foreignKeyName><![CDATA[fk_rails_fb915499a4]]></foreignKeyName>
             <uid><![CDATA[FE480B17-CE7F-404C-801B-AE3EB9D2AF3D]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[4]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[3]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[products_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[392E492A-1A7F-461D-A0EF-AE4239EB72EA]]></uid>
@@ -198,7 +198,7 @@
             <type><![CDATA[INTEGER]]></type>
             <uid><![CDATA[6C309885-D054-45F4-9033-7B3AF24A47CA]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[2]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[1]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[profiles_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[786CA049-1650-4B49-8ECD-55B0127A5D92]]></uid>
@@ -235,7 +235,7 @@
             <type><![CDATA[CHARACTER VARYING]]></type>
             <uid><![CDATA[061B5908-A675-4DA9-BE11-2ACF90F92374]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[8]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[7]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[markets_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[7CF3AAA8-D095-41CE-A50B-CEC288FC89E9]]></uid>
@@ -303,7 +303,7 @@
             <foreignKeyName><![CDATA[fk_rails_f8614277ca]]></foreignKeyName>
             <uid><![CDATA[1923345B-2511-4D9D-B731-FD6BAEBEAB84]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[9]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[8]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[devices_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[7FEAE0CA-206E-41F1-BD81-9898C79D3E83]]></uid>
@@ -340,7 +340,7 @@
             <type><![CDATA[TEXT]]></type>
             <uid><![CDATA[487E0A4B-DEB6-4736-BC9B-7FCB26188C1E]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[7]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[6]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[primary_concerns_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[883000C5-72C1-42D4-BC79-8E86B5C82A74]]></uid>
@@ -397,7 +397,7 @@
             <foreignKeyName><![CDATA[fk_rails_f53f501ab3]]></foreignKeyName>
             <uid><![CDATA[BA6F4996-6B6A-42A0-B3C4-26A7FE9637DE]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[5]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[4]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[product_translations_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[9A3EF685-AAD2-4528-B8E8-04E734921DCC]]></uid>
@@ -455,7 +455,7 @@
             <foreignKeyName><![CDATA[fk_rails_da161d74b7]]></foreignKeyName>
             <uid><![CDATA[8FC0BCAE-87C1-4DF6-898A-7A2194D02301]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[1]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[0]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[related_product_relations_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[BD9C6DA5-9AF1-43C8-86AF-D3DC2F2DD2DF]]></uid>
@@ -492,7 +492,7 @@
             <type><![CDATA[TEXT]]></type>
             <uid><![CDATA[5EACB685-BD86-45E6-B225-89A5B40E1655]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[10]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[9]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[categories_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[C170989E-2A43-4472-AEF1-CC80B19D3DAF]]></uid>
@@ -550,7 +550,7 @@
             <foreignKeyName><![CDATA[fk_rails_469a959833]]></foreignKeyName>
             <uid><![CDATA[EB4C0B11-4445-4B7C-AB21-CAEAE0E90315]]></uid>
         </SQLField>
-        <labelWindowIndex><![CDATA[3]]></labelWindowIndex>
+        <labelWindowIndex><![CDATA[2]]></labelWindowIndex>
         <PK_KEY_NAME><![CDATA[profile_markets_pkey]]></PK_KEY_NAME>
         <ui.treeExpanded><![CDATA[1]]></ui.treeExpanded>
         <uid><![CDATA[E0B5CAC0-7A66-4416-B13E-39129CAC8073]]></uid>

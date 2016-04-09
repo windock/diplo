@@ -7,7 +7,7 @@ class Device < ApplicationRecord
   class Lifecycle < TypeIs::Enum
     new :Inventory, 'Inventory'
     new :InService, 'In service'
-    new :Decomissioned, 'Decomissioned'
+    new :Decommissioned, 'Decommissioned'
   end
 
   attribute :device_type, TypeIs::IndexEnumAttribute.new(DeviceType), default: DeviceType::Consultant
