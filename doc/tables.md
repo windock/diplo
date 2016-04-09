@@ -1,3 +1,5 @@
+![Image of Database Schema](/doc/DBSchema.png)
+
 Продукты
 --------
 
