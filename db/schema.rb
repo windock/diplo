@@ -11,36 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409121535) do
+ActiveRecord::Schema.define(version: 20160409125632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string "name"
+    t.text   "description"
   end
 
   create_table "devices", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "device_type"
-    t.integer  "lifecycle"
-    t.boolean  "email_enabled"
-    t.boolean  "printer_enabled"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "profile_id"
+    t.string  "name"
+    t.integer "device_type"
+    t.integer "lifecycle"
+    t.boolean "email_enabled"
+    t.boolean "printer_enabled"
+    t.integer "profile_id"
   end
 
   add_index "devices", ["profile_id"], name: "index_devices_on_profile_id", using: :btree
 
   create_table "markets", force: :cascade do |t|
-    t.string   "code"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "code"
+    t.string "name"
   end
 
   create_table "primary_concerns", force: :cascade do |t|
@@ -49,34 +43,28 @@ ActiveRecord::Schema.define(version: 20160409121535) do
   end
 
   create_table "product_markets", force: :cascade do |t|
-    t.integer  "market_id"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "market_id"
+    t.integer "product_id"
   end
 
   create_table "product_translations", force: :cascade do |t|
-    t.integer  "product_id"
-    t.string   "title"
-    t.text     "description"
-    t.integer  "language"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer "product_id"
+    t.string  "title"
+    t.text    "description"
+    t.integer "language"
   end
 
   add_index "product_translations", ["product_id"], name: "index_product_translations_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "description"
-    t.integer  "primary_concern_id"
-    t.integer  "skin_type"
-    t.string   "sku"
-    t.decimal  "price"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "category_id"
+    t.string  "name"
+    t.string  "title"
+    t.text    "description"
+    t.integer "primary_concern_id"
+    t.integer "skin_type"
+    t.string  "sku"
+    t.decimal "price"
+    t.integer "category_id"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -90,13 +78,11 @@ ActiveRecord::Schema.define(version: 20160409121535) do
   add_index "profile_markets", ["profile_id"], name: "index_profile_markets_on_profile_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "welcome_button1"
-    t.integer  "welcome_button2"
-    t.integer  "welcome_button3"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string  "name"
+    t.text    "description"
+    t.integer "welcome_button1"
+    t.integer "welcome_button2"
+    t.integer "welcome_button3"
   end
 
   create_table "related_product_relations", force: :cascade do |t|
@@ -108,7 +94,13 @@ ActiveRecord::Schema.define(version: 20160409121535) do
   add_index "related_product_relations", ["product_id"], name: "index_related_product_relations_on_product_id", using: :btree
 
   add_foreign_key "devices", "profiles"
+  add_foreign_key "product_markets", "markets"
+  add_foreign_key "product_markets", "products"
   add_foreign_key "product_translations", "products"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "primary_concerns"
   add_foreign_key "profile_markets", "markets"
   add_foreign_key "profile_markets", "profiles"
+  add_foreign_key "related_product_relations", "products"
+  add_foreign_key "related_product_relations", "products", column: "related_product_id"
 end

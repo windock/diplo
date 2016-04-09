@@ -5,12 +5,13 @@ RSpec.describe Profile, type: :model do
 
   before do
     @markets = [Market.create(code: 'm1'), Market.create(code: 'm2'), Market.create(code: 'm3')]
-    @profile = Profile.new(name: 'profile1', markets: @markets.take(1)).save
+    @profile = Profile.new(name: 'profile1', markets: @markets.take(1))
+    @profile.save
   end
 
   it 'works' do
     ActiveRecord::Base.transaction do
-      @profile.markets = markets.take(2)
+      @profile.markets = @markets.take(2)
       expect(@profile.markets).to contain_exactly(@markets[0], @markets[1])
       raise ActiveRecord::Rollback
     end

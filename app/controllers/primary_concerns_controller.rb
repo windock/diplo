@@ -32,7 +32,7 @@ class PrimaryConcernsController < ApplicationController
 
   def destroy
     @primary_concern.destroy
-    redirect_to categories_url, notice: 'PrimaryConcern was successfully destroyed.'
+    redirect_to primary_concerns_url, notice: 'PrimaryConcern was successfully destroyed.'
   end
 
   private
