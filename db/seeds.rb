@@ -14,6 +14,8 @@ DE = Market.create!(code: 'DE', name: 'Germany')
 UA = Market.create!(code: 'UA', name: 'Ukraine')
 RU = Market.create!(code: 'RU', name: 'Russia')
 BG = Market.create!(code: 'BG', name: 'Belgium')
+CH = Market.create!(code: 'CH', name: 'China')
+IN = Market.create!(code: 'IN', name: 'India')
 
 Category.create!(name: 'Men')
 Category.create!(name: 'Women')
@@ -61,6 +63,12 @@ profile_eastern_europe = Profile.create!({
   welcome_button2: Profile::WelcomeButton::WomenCatalogue,
   welcome_button3: Profile::WelcomeButton::Campaign,
   markets: [RU, UA]
+})
+
+profile_asia = Profile.create!({
+  name: '01-Asia',
+  description: 'But I must explain to you how all this mistaken idea of denouncing pleasure',
+  markets: [CH, IN]
 })
 
 Product.create!({
@@ -155,11 +163,11 @@ Product.create!({
   price: '20'
 })
 
-Device.create!(name: 'NA0001', profile: profile_northern_america)
+Device.create!(name: 'NA0001', device_type: Device::DeviceType::Kiosk, profile: profile_northern_america)
 Device.create!(name: 'NA0002', profile: profile_northern_america)
 
 Device.create!(name: 'WE0001', profile: profile_western_europe)
 Device.create!(name: 'WE0002', profile: profile_western_europe)
 
-Device.create!(name: 'EE0001', profile: profile_eastern_europe)
-Device.create!(name: 'EE0002', profile: profile_eastern_europe)
+Device.create!(name: 'EE0001', lifecycle: Device::Lifecycle::InService, profile: profile_eastern_europe)
+Device.create!(name: 'EE0002', lifecycle: Device::Lifecycle::InService, profile: profile_eastern_europe)
