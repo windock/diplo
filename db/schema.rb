@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328201826) do
+ActiveRecord::Schema.define(version: 20160409121535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160328201826) do
   end
 
   create_table "devices", force: :cascade do |t|
-    t.string   "username"
+    t.string   "name"
     t.integer  "device_type"
     t.integer  "lifecycle"
     t.boolean  "email_enabled"

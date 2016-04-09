@@ -13,7 +13,7 @@ class Device < ApplicationRecord
   attribute :device_type, TypeIs::IndexEnumAttribute.new(DeviceType), default: DeviceType::Consultant
   attribute :lifecycle,   TypeIs::IndexEnumAttribute.new(Lifecycle),  default: Lifecycle::Inventory
 
-  validates :username, :device_type, :lifecycle, presence: true
+  validates :name, :device_type, :lifecycle, presence: true
 
   belongs_to :profile
 end
