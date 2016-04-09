@@ -16,4 +16,8 @@ class Profile < ApplicationRecord
 
   has_many :profile_markets
   has_many :markets, through: :profile_markets
+
+  def can_be_destroyed?
+    Device.where(profile: self).blank?
+  end
 end

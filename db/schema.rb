@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409125632) do
+ActiveRecord::Schema.define(version: 20160409134840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,14 +93,14 @@ ActiveRecord::Schema.define(version: 20160409125632) do
   add_index "related_product_relations", ["product_id", "related_product_id"], name: "product_uniqueness", unique: true, using: :btree
   add_index "related_product_relations", ["product_id"], name: "index_related_product_relations_on_product_id", using: :btree
 
-  add_foreign_key "devices", "profiles"
-  add_foreign_key "product_markets", "markets"
-  add_foreign_key "product_markets", "products"
-  add_foreign_key "product_translations", "products"
-  add_foreign_key "products", "categories"
-  add_foreign_key "products", "primary_concerns"
-  add_foreign_key "profile_markets", "markets"
-  add_foreign_key "profile_markets", "profiles"
-  add_foreign_key "related_product_relations", "products"
-  add_foreign_key "related_product_relations", "products", column: "related_product_id"
+  add_foreign_key "devices", "profiles", on_delete: :restrict
+  add_foreign_key "product_markets", "markets", on_delete: :cascade
+  add_foreign_key "product_markets", "products", on_delete: :cascade
+  add_foreign_key "product_translations", "products", on_delete: :cascade
+  add_foreign_key "products", "categories", on_delete: :restrict
+  add_foreign_key "products", "primary_concerns", on_delete: :nullify
+  add_foreign_key "profile_markets", "markets", on_delete: :cascade
+  add_foreign_key "profile_markets", "profiles", on_delete: :cascade
+  add_foreign_key "related_product_relations", "products", column: "related_product_id", on_delete: :cascade
+  add_foreign_key "related_product_relations", "products", on_delete: :cascade
 end

@@ -2,7 +2,7 @@ class PrimaryConcernsController < ApplicationController
   before_action :set_primary_concern, only: [:show, :edit, :update, :destroy]
 
   def index
-    @primary_concerns = PrimaryConcern.all
+    @primary_concerns = PrimaryConcern.all.order(:name)
   end
 
   def new

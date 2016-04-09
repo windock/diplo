@@ -5,6 +5,5 @@ Rails.application.routes.draw do
   resources :products, except: [:show]
   resources :primary_concerns, except: [:show]
 
-  root to: 'visitors#index'
-  #devise_for :users
+  root to: 'profiles#index'
 end
