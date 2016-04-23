@@ -2,8 +2,8 @@ module Infrastructure
   class Repository
     def persist_new(entity)
       id = dataset.insert(map_entity(entity))
-      category.id = id
-      category
+      entity.id = id
+      entity
     end
 
     def persist_existing(entity)
@@ -13,7 +13,7 @@ module Infrastructure
     end
 
     def find(id)
-      row = dataset.where(id: id).first
+      row = dataset[id: id]
       raise Domain::EntityNotFound.new("Could not find #{entity_name} with 'id'=#{id}") if row.nil?
       map_row(row)
     end

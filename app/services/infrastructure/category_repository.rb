@@ -18,7 +18,7 @@ module Infrastructure
     end
 
     def map_row(row)
-      Domain::PrimaryConcern.new(row)
+      Domain::Category.new(row)
     end
 
     def table_name

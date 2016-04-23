@@ -15,8 +15,8 @@ class CategoriesController < ApplicationController
   def create
     @category = wrap_entity(Domain::Category.new(name: category_params[:name],
                                                  description: category_params[:description]))
-
-    if repository.persist_new(@category)
+    if @category.valid?
+      repository.persist_new(@category)
       redirect_to edit_category_path(@category), notice: 'Category was successfully created.'
     else
       render :new
@@ -27,7 +27,8 @@ class CategoriesController < ApplicationController
     @category.name = category_params[:name]
     @category.description = category_params[:description]
 
-    if repository.persist_existing(@category)
+    if @category.valid?
+      repository.persist_existing(@category)
       redirect_to edit_category_path(@category), notice: 'Category was successfully updated.'
     else
       render :edit
@@ -47,7 +48,7 @@ class CategoriesController < ApplicationController
 
 
     def category_params
-      params.require(:category).permit(:name, :description)
+      params.require(:category)
     end
 
     def repository
