@@ -17,8 +17,8 @@ table.table.table-striped
           = link_to 'Edit', edit_category_path(category), class: 'btn btn-default btn-xs'
           '
           - if category.can_be_destroyed?
-            = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-xs btn-danger'
+            = link_to 'Destroy', category_path(category), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-xs btn-danger'
           - else
-            = link_to 'Destroy', category, class: 'btn btn-xs btn-danger disabled'
+            = link_to 'Destroy', category_path(category), class: 'btn btn-xs btn-danger disabled'
 
 = link_to 'New', new_category_path, class: 'btn btn-primary'
