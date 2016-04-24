@@ -30,7 +30,7 @@
   .form-group#translations
     = f.label 'Translations', class: 'control-label col-lg-2'
     .col-lg-10
-      = select_tag :selected_language, options_from_collection_for_select(Language.to_a, :key, :value), class: 'form-control'
+      = select_tag :selected_language, options_from_collection_for_select(Domain::Language.to_a, :key, :value), class: 'form-control'
       = f.fields_for :translations do |translation_form|
         - translation = translation_form.object
         div data-language=(translation.language)

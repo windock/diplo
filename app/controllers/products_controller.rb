@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
     end
 
     def build_translations(product)
-      Language.to_a.each do |language|
+      Domain::Language.to_a.each do |language|
         if product.translations.none? { |t| t.language == language }
           product.translations.build(language: language)
         end
