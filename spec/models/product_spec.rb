@@ -1,6 +1,6 @@
 describe Product do
   it 'works' do
-    category = Category.create!(name: 'category1')
+    category = Registry.category_repository.persist(Category.new(name: 'category1')
     product1 = Product.create!(name: 'product1', title: 'product1', sku: 'sku1', category: category)
     product2 = Product.create!(name: 'product2', title: 'product2', sku: 'sku2', category: category)
 

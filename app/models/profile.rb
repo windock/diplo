@@ -1,4 +1,6 @@
 class Profile < ApplicationRecord
+  include HasMarkets
+
   class WelcomeButton < TypeIs::Enum
     new :None, 'None'
     new :Campaign, 'Campaign'
@@ -15,9 +17,14 @@ class Profile < ApplicationRecord
   attribute :welcome_button3, TypeIs::IndexEnumAttribute.new(WelcomeButton), default: WelcomeButton::None
 
   has_many :profile_markets
-  has_many :markets, through: :profile_markets
 
   def can_be_destroyed?
     Device.where(profile: self).blank?
+  end
+
+protected
+
+  def market_association
+    profile_markets
   end
 end

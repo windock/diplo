@@ -4,6 +4,10 @@ module Infrastructure
       dataset.order(:name).map { |row| map_row(row) }
     end
 
+    def find_by_name(name)
+      map_row(dataset[name: name])
+    end
+
     def remove(entity)
       db.transaction do
         db[:products].where(primary_concern_id: entity.id).update(primary_concern_id: nil)
@@ -11,10 +15,10 @@ module Infrastructure
       end
     end
 
-    protected
+  protected
 
-    def entity_name
-      'PrimaryConcern'
+    def entity_class
+      Domain::PrimaryConcern
     end
 
 
@@ -23,10 +27,6 @@ module Infrastructure
         name: entity.name,
         description: entity.description
       }
-    end
-
-    def map_row(row)
-      Domain::PrimaryConcern.new(row)
     end
 
     def table_name

@@ -4,10 +4,14 @@ module Infrastructure
       dataset.order(:name).map { |row| map_row(row) }
     end
 
+    def find_by_name(name)
+      map_row(dataset[name: name])
+    end
+
   protected
 
-    def entity_name
-      'Category'
+    def entity_class
+      Domain::Category
     end
 
     def map_entity(entity)
@@ -15,10 +19,6 @@ module Infrastructure
         name: entity.name,
         description: entity.description
       }
-    end
-
-    def map_row(row)
-      Domain::Category.new(row)
     end
 
     def table_name

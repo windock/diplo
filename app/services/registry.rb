@@ -10,6 +10,10 @@ class Registry
   def self.primary_concern_repository
     Infrastructure::PrimaryConcernRepository.new
   end
+
+  def self.market_repository
+    Infrastructure::MarketRepository.new
+  end
 end
 
 R = Registry

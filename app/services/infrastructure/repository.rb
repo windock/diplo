@@ -1,5 +1,14 @@
 module Infrastructure
   class Repository
+
+    def persist(entity)
+      if entity.id
+        persist_existing(entity)
+      else
+        persist_new(entity)
+      end
+    end
+
     def persist_new(entity)
       id = dataset.insert(map_entity(entity))
       entity.id = id
@@ -14,7 +23,7 @@ module Infrastructure
 
     def find(id)
       row = dataset[id: id]
-      raise Domain::EntityNotFound.new("Could not find #{entity_name} with 'id'=#{id}") if row.nil?
+      raise Domain::EntityNotFound.new("Could not find #{entity_class.name} with 'id'=#{id}") if row.nil?
       map_row(row)
     end
 
@@ -23,10 +32,18 @@ module Infrastructure
     end
 
     def remove(entity)
-      dataset.where(id: entity.id).delete
+      dataset[id: entity.id].delete
+    end
+
+    def remove_all
+      dataset.delete
     end
 
   protected
+
+    def map_row(row)
+      entity_class.new(row)
+    end
 
     def dataset
       Registry.db[table_name]

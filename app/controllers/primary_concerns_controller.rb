@@ -17,7 +17,7 @@ class PrimaryConcernsController < ApplicationController
                                                       description: primary_concern_params[:description]))
 
     if @primary_concern.valid?
-      repository.persist_new(@primary_concern)
+      repository.persist(@primary_concern)
       redirect_to edit_primary_concern_path(@primary_concern), notice: 'PrimaryConcern was successfully created.'
     else
       render :new
@@ -29,7 +29,7 @@ class PrimaryConcernsController < ApplicationController
     @primary_concern.description = primary_concern_params[:description]
 
     if @primary_concern.valid?
-      repository.persist_existing(@primary_concern)
+      repository.persist(@primary_concern)
       redirect_to edit_primary_concern_path(@primary_concern), notice: 'PrimaryConcern was successfully updated.'
     else
       render :edit

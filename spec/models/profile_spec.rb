@@ -4,7 +4,14 @@ RSpec.describe Profile, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 
   before do
-    @markets = [Market.create(code: 'm1'), Market.create(code: 'm2'), Market.create(code: 'm3')]
+    @markets = [
+      Domain::Market.new(code: 'm1'),
+      Domain::Market.new(code: 'm2'),
+      Domain::Market.new(code: 'm3')
+    ]
+    @markets.each do |market|
+      Registry.market_repository.persist(market)
+    end
     @profile = Profile.new(name: 'profile1', markets: @markets.take(1))
     @profile.save
   end
@@ -25,7 +32,7 @@ RSpec.describe Profile, type: :model do
 
   after do
     ProfileMarket.destroy_all
-    Market.destroy_all
     Profile.destroy_all
+    Registry.market_repository.remove_all
   end
 end

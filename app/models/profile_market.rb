@@ -1,4 +1,7 @@
 class ProfileMarket < ApplicationRecord
   belongs_to :profile
-  belongs_to :market
+
+  def market
+    Registry.market_repository.find(market_id)
+  end
 end

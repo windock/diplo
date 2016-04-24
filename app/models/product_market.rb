@@ -1,4 +1,7 @@
 class ProductMarket < ApplicationRecord
   belongs_to :product
-  belongs_to :market
+
+  def market
+    Registry.market_repository.find(market_id)
+  end
 end

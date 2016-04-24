@@ -14,7 +14,7 @@ module Domain
     attr_accessor :name, :description
 
     def can_be_destroyed?
-      Product.where(category: self).blank?
+      Product.where(category_id: id).blank?
     end
   end
 end
