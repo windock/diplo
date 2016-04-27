@@ -19,7 +19,7 @@ class Profile < ApplicationRecord
   has_many :profile_markets
 
   def can_be_destroyed?
-    Device.where(profile: self).blank?
+    Registry.device_repository.for_profile_id(id).blank?
   end
 
 protected

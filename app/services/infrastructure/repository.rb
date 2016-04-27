@@ -32,7 +32,7 @@ module Infrastructure
     end
 
     def remove(entity)
-      dataset[id: entity.id].delete
+      dataset.where(id: entity.id).delete
     end
 
     def remove_all

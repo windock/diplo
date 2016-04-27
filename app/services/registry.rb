@@ -14,6 +14,10 @@ class Registry
   def self.market_repository
     Infrastructure::MarketRepository.new
   end
+
+  def self.device_repository
+    Infrastructure::DeviceRepository.new
+  end
 end
 
 R = Registry

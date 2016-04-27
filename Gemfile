@@ -16,8 +16,7 @@ group :development do
   gem 'spring'
 end
 gem 'bootstrap-sass'
-#gem 'devise'
-#gem 'devise-i18n'
+gem 'virtus'
 gem 'pg'
 gem 'slim-rails'
 gem 'thin'
