@@ -1,5 +1,8 @@
 module Infrastructure
   class Repository
+    def initialize(db)
+      @db = db
+    end
 
     def persist(entity)
       if entity.id
@@ -39,6 +42,12 @@ module Infrastructure
       dataset.delete
     end
 
+    def transaction(&block)
+      db.transaction do
+        yield block
+      end
+    end
+
   protected
 
     def map_row(row)
@@ -46,11 +55,9 @@ module Infrastructure
     end
 
     def dataset
-      Registry.db[table_name]
+      db[table_name]
     end
 
-    def db
-      Registry.db
-    end
+    attr_reader :db
   end
 end

@@ -1,4 +1,4 @@
-= form_for @product, html: { class: "form form-horizontal product" } do |f|
+= form_for @product_form, html: { class: "form form-horizontal product" } do |f|
   .form-group
     = f.label :name, class: 'control-label col-lg-2'
     .col-lg-10
@@ -65,12 +65,13 @@
             = b.text
   .form-group#related-products
     = f.label :related_products, class: 'control-label col-lg-2'
+    = hidden_field_tag "product[related_product_ids][]", ""
     .col-lg-10
-      - @product.related_products.each do |related_product|
+      - @product_form.related_product_ids.each do |related_product_id|
         .row.form-group.js-item
           .col-lg-10
             = select_tag "product[related_product_ids][]",
-              options_from_collection_for_select(available_related_products, :id, :name, { selected: related_product.id }),
+              options_from_collection_for_select(available_related_products, :id, :name, { selected: related_product_id }),
               class: 'form-control'
           .col-lg-2
             a.js-remove href="#" Remove
@@ -83,7 +84,6 @@
             class: 'form-control'
         .col-lg-2
           a.js-remove href="#" Remove
-
 
   .form-group
     .col-lg-offset-2.col-lg-10

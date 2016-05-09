@@ -48,37 +48,42 @@ end
   Registry.primary_concern_repository.persist(primary_concern)
 end
 
-profile_northern_america = Profile.create!({
+profile_northern_america = Domain::Profile.new(
   name: '01-Northern-America',
   description: 'Lorem ipsum dolor sit amet',
-  welcome_button1: Profile::WelcomeButton::Campaign,
-  welcome_button2: Profile::WelcomeButton::MenCatalogue,
-  welcome_button3: Profile::WelcomeButton::WomenCatalogue,
-  markets: [US, CA]
-})
+  welcome_button1: Domain::Profile::WelcomeButton::Campaign,
+  welcome_button2: Domain::Profile::WelcomeButton::MenCatalogue,
+  welcome_button3: Domain::Profile::WelcomeButton::WomenCatalogue,
+)
+profile_northern_america.markets = [US, CA]
 
-profile_western_europe = Profile.create!({
+profile_western_europe = Domain::Profile.new(
   name: '01-Western-Europe',
   description: 'consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-  welcome_button1: Profile::WelcomeButton::MenCatalogue,
-  welcome_button2: Profile::WelcomeButton::WomenCatalogue,
-  markets: [DE, BG]
-})
+  welcome_button1: Domain::Profile::WelcomeButton::MenCatalogue,
+  welcome_button2: Domain::Profile::WelcomeButton::WomenCatalogue,
+)
+profile_western_europe.markets = [DE, BG]
 
-profile_eastern_europe = Profile.create!({
+profile_eastern_europe = Domain::Profile.new(
   name: '01-Eastern-Europe',
   description: 'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-  welcome_button1: Profile::WelcomeButton::WomenSkinDiagnostics,
-  welcome_button2: Profile::WelcomeButton::WomenCatalogue,
-  welcome_button3: Profile::WelcomeButton::Campaign,
-  markets: [RU, UA]
-})
+  welcome_button1: Domain::Profile::WelcomeButton::WomenSkinDiagnostics,
+  welcome_button2: Domain::Profile::WelcomeButton::WomenCatalogue,
+  welcome_button3: Domain::Profile::WelcomeButton::Campaign,
+)
+profile_eastern_europe.markets = [RU, UA]
 
-profile_asia = Profile.create!({
+profile_asia = Domain::Profile.new(
   name: '01-Asia',
   description: 'But I must explain to you how all this mistaken idea of denouncing pleasure',
-  markets: [CH, IN]
-})
+)
+profile_asia.markets = [CH, IN]
+
+Registry.profile_repository.persist(profile_northern_america)
+Registry.profile_repository.persist(profile_western_europe)
+Registry.profile_repository.persist(profile_eastern_europe)
+Registry.profile_repository.persist(profile_asia)
 
 Product.create!({
   name: 'Aloe Shave Gel (P)',
@@ -165,18 +170,18 @@ Product.create!({
   description: "The first step to dermatologist developed 3-Step Skin Care System: Leaves skin clean, comfortable, refreshed. All the benefits of famous Facial Soap in a liquid formula.",
   category: Registry.category_repository.find_by_name('Women'),
   title: 'Liquid Facial Soap',
-  skin_type: Product::SkinType::Sensitive,
+  skin_type: Domain::Product::SkinType::Sensitive,
   sku: 'W4RZ1',
   primary_concern: Registry.primary_concern_repository.find_by_name('Daily Care'),
   markets: [US, CA],
   price: '20'
 })
 
-Device.create!(name: 'NA0001', device_type: Device::DeviceType::Kiosk, profile: profile_northern_america)
-Device.create!(name: 'NA0002', profile: profile_northern_america)
+Registry.device_repository.persist(Domain::Device.new(name: 'NA0001', device_type: Domain::Device::DeviceType::Kiosk, profile_id: profile_northern_america.id))
+Registry.device_repository.persist(Domain::Device.new(name: 'NA0002', profile_id: profile_northern_america.id))
 
-Device.create!(name: 'WE0001', profile: profile_western_europe)
-Device.create!(name: 'WE0002', profile: profile_western_europe)
+Registry.device_repository.persist(Domain::Device.new(name: 'WE0001', profile_id: profile_western_europe.id))
+Registry.device_repository.persist(Domain::Device.new(name: 'WE0002', profile_id: profile_western_europe.id))
 
-Device.create!(name: 'EE0001', lifecycle: Device::Lifecycle::InService, profile: profile_eastern_europe)
-Device.create!(name: 'EE0002', lifecycle: Device::Lifecycle::InService, profile: profile_eastern_europe)
+Registry.device_repository.persist(Domain::Device.new(name: 'EE0001', lifecycle: Domain::Device::Lifecycle::InService, profile_id: profile_eastern_europe.id))
+Registry.device_repository.persist(Domain::Device.new(name: 'EE0002', lifecycle: Domain::Device::Lifecycle::InService, profile_id: profile_eastern_europe.id))

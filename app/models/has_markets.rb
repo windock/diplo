@@ -13,7 +13,7 @@ module HasMarkets
 
   def market_ids=(market_ids)
     market_association.clear
-    market_ids.each do |market_id|
+    market_ids.reject(&:blank?).each do |market_id|
       market_association.build(market_id: market_id)
     end
   end

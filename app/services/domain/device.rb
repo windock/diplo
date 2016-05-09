@@ -27,7 +27,7 @@ module Domain
     attr_accessor :name, :device_type, :lifecycle, :email_enabled, :printer_enabled, :profile_id
 
     def profile
-      Profile.find(profile_id)
+      Registry.profile_repository.find(profile_id)
     end
 
     def name=(name)

@@ -4,20 +4,26 @@ class Registry
   end
 
   def self.category_repository
-    Infrastructure::CategoryRepository.new
+    Infrastructure::CategoryRepository.new(db)
   end
 
   def self.primary_concern_repository
-    Infrastructure::PrimaryConcernRepository.new
+    Infrastructure::PrimaryConcernRepository.new(db)
   end
 
   def self.market_repository
-    Infrastructure::MarketRepository.new
+    Infrastructure::MarketRepository.new(db)
   end
 
   def self.device_repository
-    Infrastructure::DeviceRepository.new
+    Infrastructure::DeviceRepository.new(db)
+  end
+
+  def self.profile_repository
+    Infrastructure::ProfileRepository.new(db)
+  end
+
+  def self.product_repository
+    Infrastructure::ProductRepository.new(db)
   end
 end
-
-R = Registry

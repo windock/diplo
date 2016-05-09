@@ -15,10 +15,10 @@ table.table.table-striped
         td = device.name
         td = device.device_type.value
         td = device.lifecycle.value
-        td = link_to device.profile.name, edit_profile_path(device.profile)
+        td = link_to device.profile.name, edit_profile_path(id: device.profile_id)
         td
-          = link_to 'Edit', edit_device_path(device), class: 'btn btn-default btn-xs'
+          = link_to 'Edit', edit_device_path(id: device.id), class: 'btn btn-default btn-xs'
           '
-          = link_to 'Destroy', device_path(device), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+          = link_to 'Destroy', device_path(id: device.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
 
 = link_to 'New', new_device_path, class: 'btn btn-primary'

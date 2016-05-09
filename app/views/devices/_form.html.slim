@@ -30,7 +30,7 @@
   .form-group
     = f.label :profile, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.collection_select :profile_id, Profile.all, :id, :name, {}, { class: 'form-control' }
+      = f.collection_select :profile_id, Registry.profile_repository.all, :id, :name, {}, { class: 'form-control' }
   .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil, class: 'btn btn-primary'

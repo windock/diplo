@@ -1,48 +1,55 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update, :destroy]
-
   def index
-    @products = Product.all.order(:name)
+    @products = wrap_entity_collection(repository.sorted_by_name)
   end
 
   def new
+    @product_form = Infrastructure::ProductForm.build_new
+    #build_translations(@product)
+  end
+
+  def new2
     @product = Product.new
-    build_translations(@product)
+    #build_translations(@product)
   end
 
   def edit
-    build_translations(@product)
+    product = repository.find(params[:id])
+    @product_form = Infrastructure::ProductForm.build_edit(product)
+    #build_translations(@product)
   end
 
   def create
-    @product = Product.new(product_params)
-    build_translations(@product)
+    @product_form = Infrastructure::ProductForm.build_new(product_params)
 
-    if @product.save
-      redirect_to edit_product_path(@product), notice: 'Product was successfully created.'
+    if @product_form.valid?
+      product = @product_form.build_product
+      repository.persist(product)
+      redirect_to edit_product_path(id: product.id), notice: 'Product was successfully created.'
     else
       render :new
     end
   end
 
   def update
-    if @product.update(product_params)
-      redirect_to edit_product_path(@product), notice: 'Product was successfully updated.'
+    product = repository.find(params[:id])
+
+    @product_form = Infrastructure::ProductForm.build_edit(product, product_params)
+    if @product_form.valid?
+      @product_form.update_product
+      repository.persist(product)
+      redirect_to edit_product_path(id: product.id), notice: 'Product was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @product.destroy
+    repository.remove(repository.find(params[:id]))
     redirect_to products_url, notice: 'Product was successfully destroyed.'
   end
 
   private
-    def set_product
-      @product = Product.find(params[:id])
-    end
-
     def build_translations(product)
       Domain::Language.to_a.each do |language|
         if product.translations.none? { |t| t.language == language }
@@ -52,16 +59,18 @@ class ProductsController < ApplicationController
     end
 
     helper_method def available_related_products
-      Product.order(:name).reject { |p| p.id == @product.id }
+      if @product
+        Product.order(:name).reject { |p| p.id == @product.id }
+      else
+        Product.order(:name)
+      end
     end
 
     def product_params
-      params.require(:product).permit(
-        :title, :name, :description, :primary_concern, :skin_type, :sku, :price,
-        :category_id,
-        market_ids: [],
-        translations_attributes: [:id, :title, :description, :language],
-        related_product_ids: [],
-      )
+      params.require(:product)
+    end
+
+    def repository
+      Registry.product_repository
     end
 end

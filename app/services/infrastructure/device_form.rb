@@ -1,10 +1,5 @@
 module Infrastructure
-  class DeviceForm
-    include Virtus.model
-    include ActiveModel::Conversion
-    include ActiveModel::Validations
-    extend ActiveModel::Naming
-
+  class DeviceForm < Form
     validates :name, :device_type, :lifecycle, presence: true
 
     attribute :name, String
@@ -16,42 +11,19 @@ module Infrastructure
 
     attr_accessor :device, :persisted
 
-    private def initialize(persisted)
-      self.persisted = persisted
-    end
-
-    def self.build_new(attributes = {})
-      result = new(false)
-      result.attributes = attributes if attributes.present?
-      result
-    end
-
     def self.build_edit(device, attributes = {})
       result = new(true)
       result.device = device
       result.attributes = {
         name: device.name,
-        device_type: device.device_type,
-        lifecycle: device.lifecycle,
+        device_type: device.device_type.to_s,
+        lifecycle: device.lifecycle.to_s,
         email_enabled: device.email_enabled,
         printer_enabled: device.printer_enabled,
         profile_id: device.profile_id
       }
       result.attributes = attributes if attributes.present?
       result
-    end
-
-    def persisted?
-      persisted
-    end
-
-    def to_param
-      @device.id.to_s
-    end
-
-    def model_name
-      klass = Domain::Device
-      ActiveModel::Name.new(klass, klass.parent, klass.name.demodulize)
     end
 
     def build_device
@@ -72,6 +44,16 @@ module Infrastructure
       @device.email_enabled = email_enabled
       @device.printer_enabled = printer_enabled
       @device.profile_id = profile_id
+    end
+
+  protected
+
+    def model
+      @device
+    end
+
+    def model_class
+      Domain::Device
     end
 
   private

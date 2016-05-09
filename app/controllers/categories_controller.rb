@@ -46,7 +46,6 @@ class CategoriesController < ApplicationController
       @category = wrap_entity(repository.find(params[:id]))
     end
 
-
     def category_params
       params.require(:category)
     end

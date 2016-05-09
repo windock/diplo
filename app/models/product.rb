@@ -1,15 +1,7 @@
 class Product < ApplicationRecord
   include HasMarkets
 
-  class SkinType < TypeIs::Enum
-    new :Dry, 'Dry'
-    new :Normal, 'Normal'
-    new :Oily, 'Oily'
-    new :Combination, 'Combination'
-    new :Sensitive, 'Sensitive'
-  end
-
-  attribute :skin_type, TypeIs::IndexEnumAttribute.new(SkinType), default: SkinType::Normal
+  attribute :skin_type, TypeIs::IndexEnumAttribute.new(Domain::Product::SkinType), default: Domain::Product::SkinType::Normal
 
   validates :name, :title, :skin_type, :sku, :category_id, presence: true
 
