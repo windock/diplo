@@ -2,8 +2,8 @@ module Infrastructure
   class ProfileForm < Form
     attribute :name, String
     attribute :description, String
-    attribute :welcome_button1, String, nullify_blank: true
-    attribute :welcome_button2, String, strict: true
+    attribute :welcome_button1, String
+    attribute :welcome_button2, String
     attribute :welcome_button3, String
     attribute :market_ids, Array[Integer], nullify_blank: true
 
@@ -12,7 +12,8 @@ module Infrastructure
     validates :name, presence: true
 
     def self.build_edit(profile, attributes = {})
-      result = new(true)
+      result = new
+      result.persisted = true
       result.profile = profile
       result.attributes = {
         name: profile.name,

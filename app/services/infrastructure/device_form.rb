@@ -12,7 +12,8 @@ module Infrastructure
     attr_accessor :device, :persisted
 
     def self.build_edit(device, attributes = {})
-      result = new(true)
+      result = new
+      result.persisted = true
       result.device = device
       result.attributes = {
         name: device.name,

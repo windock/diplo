@@ -7,13 +7,9 @@ module Infrastructure
 
     attr_accessor :persisted
 
-    protected def initialize(persisted)
-      self.persisted = persisted
-      super({})
-    end
-
     def self.build_new(attributes = {})
-      result = new(false)
+      result = new
+      result.persisted = false
       result.attributes = attributes if attributes.present?
       result
     end

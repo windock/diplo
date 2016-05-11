@@ -1,5 +1,7 @@
 module Domain
   class Product
+    include Infrastructure::Entity
+
     class SkinType < TypeIs::Enum
       new :Dry, 'Dry'
       new :Normal, 'Normal'
@@ -10,7 +12,8 @@ module Domain
 
     def initialize(id: nil, name: '', title: '', description: '',
                    primary_concern_id: nil, skin_type: nil, sku: '', price: 0,
-                   category_id: nil, market_ids: [], related_product_ids: [])
+                   category_id: nil, market_ids: [], related_product_ids: [],
+                   translations: [])
       self.id = id
       self.name = name
       self.title = title
@@ -20,14 +23,14 @@ module Domain
       self.sku = sku
       self.price = price
       self.category_id = category_id
-      self.related_product_ids = []
       self.market_ids = market_ids
       self.related_product_ids = related_product_ids
+      self.translations = []
     end
 
-    attr_accessor :id, :name, :title, :description, :primary_concern_id,
+    attr_accessor :name, :title, :description, :primary_concern_id,
       :skin_type, :sku, :price, :category_id, :related_product_ids, :market_ids,
-      :related_product_ids
+      :related_product_ids, :translations
 
     def category
       Registry.category_repository.find(category_id) if category_id

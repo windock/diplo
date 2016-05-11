@@ -60,9 +60,9 @@ class ProductsController < ApplicationController
 
     helper_method def available_related_products
       if @product
-        Product.order(:name).reject { |p| p.id == @product.id }
+        repository.sorted_by_name.reject { |p| p.id == @product.id }
       else
-        Product.order(:name)
+        repository.sorted_by_name
       end
     end
 

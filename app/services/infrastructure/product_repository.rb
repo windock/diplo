@@ -4,11 +4,16 @@ module Infrastructure
       dataset.order(:name).map { |row| map_row(row) }
     end
 
+    def by_category_id(category_id)
+      dataset.where(category_id: category_id).map { |row| map_row(row) }
+    end
+
     def persist_new(entity)
       transaction do
         super(entity)
         insert_product_markets(entity)
         insert_related_products(entity)
+        insert_translations(entity)
       end
     end
 
@@ -17,6 +22,7 @@ module Infrastructure
         super(entity)
         replace_product_markets(entity)
         replace_related_products(entity)
+        replace_translations(entity)
       end
     end
 
@@ -40,6 +46,17 @@ module Infrastructure
 
       related_product_rows = db[:related_product_relations].where(product_id: row[:id])
       result.related_product_ids = related_product_rows.map { |rp| rp[:related_product_id] }
+
+      translation_rows = db[:product_translations].where(product_id: row[:id])
+      result.translations = translation_rows.map do |row|
+        Domain::ProductTranslation.new(
+          id: row[:id],
+          product_id: row[:product_id],
+          title: row[:title],
+          description: row[:description],
+          language: map_language(row[:language])
+        )
+      end
 
       result
     end
@@ -67,6 +84,22 @@ module Infrastructure
 
   private
 
+    def replace_translations(entity)
+      db[:product_translations].where(product_id: entity.id).delete
+      insert_translations(entity)
+    end
+
+    def insert_translations(entity)
+      entity.translations.each do |translation|
+        db[:product_translations].insert(
+          product_id: entity.id,
+          language: translation.language.ord,
+          title: translation.title,
+          description: translation.description
+        )
+      end
+    end
+
     def replace_product_markets(entity)
       db[:product_markets].where(product_id: entity.id).delete
       insert_product_markets(entity)
@@ -91,6 +124,10 @@ module Infrastructure
 
     def map_skin_type(db_value)
       Domain::Product::SkinType.find_by_ord(db_value)
+    end
+
+    def map_language(db_value)
+      Domain::Language.find_by_ord(db_value)
     end
   end
 end
