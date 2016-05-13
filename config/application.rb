@@ -21,6 +21,7 @@ module Diplo
     end
 
     config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('app')
     config.autoload_paths << Rails.root.join('app').join('services')
 
     # Settings in config/environments/* take precedence over those specified here.

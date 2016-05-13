@@ -50,8 +50,6 @@ module Infrastructure
       translation_rows = db[:product_translations].where(product_id: row[:id])
       result.translations = translation_rows.map do |row|
         Domain::ProductTranslation.new(
-          id: row[:id],
-          product_id: row[:product_id],
           title: row[:title],
           description: row[:description],
           language: map_language(row[:language])
