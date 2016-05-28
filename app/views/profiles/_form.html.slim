@@ -12,17 +12,17 @@
   .form-group
     = f.label :welcome_button1, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.collection_select :welcome_button1, Domain::Profile::WelcomeButton, :itself, :value, {}, class: 'form-control'
+      = f.collection_select :welcome_button1, Domain::Profile::WelcomeButton, :name, :value, {}, class: 'form-control'
     = f.error_span(:welcome_button1)
   .form-group
     = f.label :welcome_button2, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.collection_select :welcome_button2, Domain::Profile::WelcomeButton, :itself, :value, {}, class: 'form-control'
+      = f.collection_select :welcome_button2, Domain::Profile::WelcomeButton, :name, :value, {}, class: 'form-control'
     = f.error_span(:welcome_button2)
   .form-group
     = f.label :welcome_button3, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.collection_select :welcome_button3, Domain::Profile::WelcomeButton, :itself, :value, {}, class: 'form-control'
+      = f.collection_select :welcome_button3, Domain::Profile::WelcomeButton, :name, :value, {}, class: 'form-control'
     = f.error_span(:welcome_button3)
   .form-group
     = f.label :markets, class: 'control-label col-lg-2'

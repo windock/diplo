@@ -2,15 +2,15 @@ module Domain
   class Device
     include Infrastructure::Entity
 
-    class DeviceType < TypeIs::Enum
-      new :Kiosk, 'Kiosk'
-      new :Consultant, 'Consultant'
+    class DeviceType < TypeIsEnum::ValueEnum
+      add :Kiosk, 'Kiosk'
+      add :Consultant, 'Consultant'
     end
 
-    class Lifecycle < TypeIs::Enum
-      new :Inventory, 'Inventory'
-      new :InService, 'In service'
-      new :Decommissioned, 'Decommissioned'
+    class Lifecycle < TypeIsEnum::ValueEnum
+      add :Inventory, 'Inventory'
+      add :InService, 'In service'
+      add :Decommissioned, 'Decommissioned'
     end
 
     def initialize(name:, profile_id:, id: nil, device_type: DeviceType::Consultant,

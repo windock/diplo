@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/windock/type_is_enum.git
+  revision: a43924ae3ab283f710d0c02d6c8ffe3164b0fdea
+  branch: master
+  specs:
+    type_is_enum (0.1.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -262,6 +269,7 @@ DEPENDENCIES
   spring-commands-rspec
   thin
   twitter-bootstrap-rails
+  type_is_enum!
   uglifier (>= 1.3.0)
   virtus
   web-console (~> 2.0)

@@ -2,12 +2,12 @@ module Domain
   class Product
     include Infrastructure::Entity
 
-    class SkinType < TypeIs::Enum
-      new :Dry, 'Dry'
-      new :Normal, 'Normal'
-      new :Oily, 'Oily'
-      new :Combination, 'Combination'
-      new :Sensitive, 'Sensitive'
+    class SkinType < TypeIsEnum::ValueEnum
+      add :Dry, 'Dry'
+      add :Normal, 'Normal'
+      add :Oily, 'Oily'
+      add :Combination, 'Combination'
+      add :Sensitive, 'Sensitive'
     end
 
     def initialize(id: nil, name: '', title: '', description: '',

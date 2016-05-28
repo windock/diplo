@@ -11,7 +11,7 @@ module Infrastructure
         result.attributes = {
           title: translation.title,
           description: translation.description,
-          language: translation.language.to_s
+          language: translation.language.name
         }
         result
       end
@@ -19,7 +19,7 @@ module Infrastructure
       def self.build_new(language)
         result = new
         result.persisted = false
-        result.language = language.to_s
+        result.language = language.name
         result
       end
 
@@ -63,7 +63,7 @@ module Infrastructure
         title: product.title,
         description: product.description,
         primary_concern_id: product.primary_concern_id,
-        skin_type: product.skin_type.to_s,
+        skin_type: product.skin_type.name,
         sku: product.sku,
         price: product.price,
         category_id: product.category_id,

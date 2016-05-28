@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sequel-rails'
+gem 'type_is_enum', github: 'windock/type_is_enum', branch: 'master'
 group :development, :test do
   gem 'byebug'
 end

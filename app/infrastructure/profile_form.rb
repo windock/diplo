@@ -18,9 +18,9 @@ module Infrastructure
       result.attributes = {
         name: profile.name,
         description: profile.description,
-        welcome_button1: profile.welcome_button1.to_s,
-        welcome_button2: profile.welcome_button2.to_s,
-        welcome_button3: profile.welcome_button3.to_s,
+        welcome_button1: profile.welcome_button1.name,
+        welcome_button2: profile.welcome_button2.name,
+        welcome_button3: profile.welcome_button3.name,
         market_ids: profile.market_ids
       }
       result.attributes = attributes if attributes.present?

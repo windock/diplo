@@ -1,7 +1,7 @@
 module Domain
-  class Language < TypeIs::Enum
-    new :English, 'English'
-    new :Russian, 'Russian'
-    new :German, 'German'
+  class Language < TypeIsEnum::ValueEnum
+    add :English, 'English'
+    add :Russian, 'Russian'
+    add :German, 'German'
   end
 end

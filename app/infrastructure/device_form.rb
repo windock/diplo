@@ -17,8 +17,8 @@ module Infrastructure
       result.device = device
       result.attributes = {
         name: device.name,
-        device_type: device.device_type.to_s,
-        lifecycle: device.lifecycle.to_s,
+        device_type: device.device_type.name,
+        lifecycle: device.lifecycle.name,
         email_enabled: device.email_enabled,
         printer_enabled: device.printer_enabled,
         profile_id: device.profile_id

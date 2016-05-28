@@ -2,13 +2,13 @@ module Domain
   class Profile
     include Infrastructure::Entity
 
-    class WelcomeButton < TypeIs::Enum
-      new :None, 'None'
-      new :Campaign, 'Campaign'
-      new :MenCatalogue, 'Men Catalogue'
-      new :WomenCatalogue, 'Women Catalogue'
-      new :MenSkinDiagnostics, 'Men Skin Diagnostics'
-      new :WomenSkinDiagnostics, 'Women Skin Diagnostics'
+    class WelcomeButton < TypeIsEnum::ValueEnum
+      add :None, 'None'
+      add :Campaign, 'Campaign'
+      add :MenCatalogue, 'Men Catalogue'
+      add :WomenCatalogue, 'Women Catalogue'
+      add :MenSkinDiagnostics, 'Men Skin Diagnostics'
+      add :WomenSkinDiagnostics, 'Women Skin Diagnostics'
     end
 
     def initialize(id: nil, name: '',  description: '',
