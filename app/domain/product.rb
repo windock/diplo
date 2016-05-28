@@ -11,7 +11,7 @@ module Domain
     end
 
     def initialize(id: nil, name: '', title: '', description: '',
-                   primary_concern_id: nil, skin_type: nil, sku: '', price: 0,
+                   primary_concern_id: nil, skin_type: SkinType::Normal, sku: '', price: 0,
                    category_id: nil, market_ids: [], related_product_ids: [],
                    translations: [])
       self.id = id

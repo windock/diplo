@@ -85,97 +85,97 @@ Registry.profile_repository.persist(profile_western_europe)
 Registry.profile_repository.persist(profile_eastern_europe)
 Registry.profile_repository.persist(profile_asia)
 
-Product.create!({
+Registry.product_repository.persist(Domain::Product.new({
   name: 'Aloe Shave Gel (P)',
   description: 'Aloe-rich gel softens and cushions face and beard for a smooth, close shave. Oil-free.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Aloe Shave Gel',
   sku: 'Z4RN1',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Shave'),
-  markets: all_markets,
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Shave').id,
+  market_ids: all_markets.map(&:id),
   price: '5'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'Aloe Shave Gel (D)',
   description: 'Aloe-rich gel softens and cushions face and beard for a smooth, close shave. Oil-free.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Aloe Shave Gel',
   sku: 'Z4RN2',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Shave'),
-  markets: all_markets,
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Shave').id,
+  market_ids: all_markets.map(&:id),
   price: '6'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'Antiperspirant Deodorant Roll-On (P)',
   description: 'Comfortable, dependable defense against perspiration and odor. Dries quickly.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Antiperspirant Deodorant Roll-On',
   sku: 'Z4RN3',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Deodorant'),
-  markets: all_markets,
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Deodorant').id,
+  market_ids: all_markets.map(&:id),
   price: '6'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'Antiperspirant Deodorant Roll-On (W)',
   description: 'Comfortable, dependable defense against perspiration and odor. Dries quickly.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Antiperspirant Deodorant Roll-On',
   sku: 'Z4RN4',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Deodorant'),
-  markets: all_markets,
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Deodorant').id,
+  market_ids: all_markets.map(&:id),
   price: '5'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'For Men Charcoal Face Wash (Europe)',
   description: 'Purifying gel wash delivers a deep-pore clean. Natural charcoal draws out the dirt and excess oil that can clog pores. Soothing, non-drying lather gently foams away impurities. Leaves all skin types feeling fresh, comfortable.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Charcoal Face Wash',
   sku: 'Z4RM2',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Cleanse'),
-  markets: [DE, BG, UA, RU],
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Cleanse').id,
+  market_ids: [DE.id, BG.id, UA.id, RU.id],
   price: '10'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'For Men Charcoal Face Wash (America)',
   description: 'Purifying gel wash delivers a deep-pore clean. Natural charcoal draws out the dirt and excess oil that can clog pores. Soothing, non-drying lather gently foams away impurities. Leaves all skin types feeling fresh, comfortable.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Charcoal Face Wash',
   sku: 'Z4RM2',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Cleanse'),
-  markets: [US, CA],
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Cleanse').id,
+  market_ids: [US.id, CA.id],
   price: '10'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'Face Scrub (Europe)',
   description: 'Clears the way for closest shaves. Fine, non-abrasive grains de-flake, lift beard hairs, help reduce ingrown hairs. Revives and smooths skin.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Face Scrub',
   sku: 'Z4RZ1',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Shave'),
-  markets: [DE, UA, RU, BG],
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Shave').id,
+  market_ids: [DE.id, UA.id, RU.id, BG.id],
   price: '10'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'Face Scrub (America)',
   description: 'Clears the way for closest shaves. Fine, non-abrasive grains de-flake, lift beard hairs, help reduce ingrown hairs. Revives and smooths skin.',
-  category: Registry.category_repository.find_by_name('Men'),
+  category_id: Registry.category_repository.find_by_name('Men').id,
   title: 'Face Scrub',
   sku: 'Z4RZ1',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Shave'),
-  markets: [US, CA],
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Shave').id,
+  market_ids: [US.id, CA.id],
   price: '10'
-})
-Product.create!({
+}))
+Registry.product_repository.persist(Domain::Product.new({
   name: 'Liquid Facial Soap Extra-Mild',
   description: "The first step to dermatologist developed 3-Step Skin Care System: Leaves skin clean, comfortable, refreshed. All the benefits of famous Facial Soap in a liquid formula.",
-  category: Registry.category_repository.find_by_name('Women'),
+  category_id: Registry.category_repository.find_by_name('Women').id,
   title: 'Liquid Facial Soap',
   skin_type: Domain::Product::SkinType::Sensitive,
   sku: 'W4RZ1',
-  primary_concern: Registry.primary_concern_repository.find_by_name('Daily Care'),
-  markets: [US, CA],
+  primary_concern_id: Registry.primary_concern_repository.find_by_name('Daily Care').id,
+  market_ids: [US.id, CA.id],
   price: '20'
-})
+}))
 
 Registry.device_repository.persist(Domain::Device.new(name: 'NA0001', device_type: Domain::Device::DeviceType::Kiosk, profile_id: profile_northern_america.id))
 Registry.device_repository.persist(Domain::Device.new(name: 'NA0002', profile_id: profile_northern_america.id))
